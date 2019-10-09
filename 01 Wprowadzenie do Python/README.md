@@ -665,10 +665,9 @@ Na sam koniec warto dodać, że edytor środowiska PyCharm posiada zaimplementow
 5. Wyszukaj w Internecie pojęcie „extended slice” w kontekście Pythona i wyświetl swoje imię i nazwisko z odwróconą kolejnością znaków z kapitalikami. Np. Fotzsyzrk Kaipor
 6. Stwórz listę z wartościami od 1 do 10. Następnie podziel listę tak, aby pierwsze 5 liczb zostało w oryginalnej liście a pozostałe 5 znalazło się w nowej liście.
 7. Połącz te listy ponownie. Dodaj do listy wartość „0” na początku. Utwórz kopię połączonej listy i wyświetl listę posortowaną malejąco.
-8. Za pomocą rzutowania stringa na listę wykonaj ćwiczenie 5 z podrozdziału o typach liczbowych.
-9. Za pomocą krotek stwórz listę studentów swojej grupy przypisując `numer indeksu` do `imienia i nazwiska` (dane nie muszą być prawdziwe).
-10. Przekształć poprzednie zadanie na słownik, a następnie dodaj pary zawierające wiek, adres email, rok urodzenia oraz adres.
-11. Stwórz listę zawierającą numery telefonów z powtórzeniami, a następnie usuń powtórzenia za pomocą rzutowania na `set`.
-12. Korzystając z funkcji `range` wypisz elementy rosnąco od 1 - 10
-13. Korzystając z funkcji `range` wypisz elementy malejąco od 100 - 20, co 5 wartości.
-14. Połącz całą wiedzę wydobytą z zajęć (i zadań) i stwórz program wypisujący dane z listy, która zawiera kilka słowników (dane wypisz w postaci jednego string'a odpowiednio go formatując).
+8. Za pomocą krotek stwórz listę studentów swojej grupy przypisując `numer indeksu` do `imienia i nazwiska` (dane nie muszą być prawdziwe).
+9. Przekształć poprzednie zadanie na słownik, a następnie dodaj pary zawierające wiek, adres email, rok urodzenia oraz adres.
+10. Stwórz listę zawierającą numery telefonów z powtórzeniami, a następnie usuń powtórzenia za pomocą rzutowania na `set`.
+11. Korzystając z funkcji `range` wypisz elementy rosnąco od 1 - 10
+12. Korzystając z funkcji `range` wypisz elementy malejąco od 100 - 20, co 5 wartości.
+13. Połącz całą wiedzę wydobytą z zajęć (i zadań) i stwórz program wypisujący dane z listy, która zawiera kilka słowników (dane wypisz w postaci jednego string'a odpowiednio go formatując).
