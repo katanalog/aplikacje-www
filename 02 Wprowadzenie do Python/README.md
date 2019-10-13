@@ -333,3 +333,267 @@ Struktura pakietów i modułów może być bardziej rozbudowana i rozmieszczona 
 
 ## Zarządzanie pakietami oraz `virtualenv`
 
+Właściwie  każdy  popularny  język  programowania  posiada  mechanizm  pozwalający  na  zarządzanie dodatkowymi bibliotekami czy pakietami. Python również posiada swojego menadżera pakietów o nazwie `pip`. W wersji 3.x nie jest konieczne jego ręczne instalowanie gdyż jest już domyślnie dołączany do tych dystrybucji.
+
+### PIP w Windowsowym wierszu poleceń
+
+Aby korzystać z narzędzia PIP w wierszu poleceń systemu Windows musimy się najpierw upewnić, że interpreter Pythona (oraz folder Scripts) znajduje się w zmiennej środowiskowej `PATH`. Możemy albo wyświetlić zmienną path, albo po prostu w terminalu wykonać polecenie `python –version`, które zwróci wersję Pythona, z której aktualnie korzystamy lub polecenie nie zostanie rozpoznane.
+
+Jeżeli powyższy warunek jest spełniony możemy uruchomić narzędzie PIP i np. wyświetlić listę pakietów z aktualnego środowiska Pythona:
+
+```bash
+python –m pip list
+```
+
+Listę poleceń i skromny help uzyskamy po komendzie:
+
+```bash
+python –m pip help
+```
+
+Index pakietów, które można zainstalować z indexy PyPi znajdziemy pod adresem https://pypi.python.org/pypi, gdzie aktualnie znajduje się ponad 122000 pakietów...
+
+Jak  wynika  z  helpa  komenda  służąca  do  instalacji  pakietu  to  `install  nazwa_pakietu`.  Zainstalujmy  pakiet `requests`.
+
+```bash
+python –m pip install requests
+```
+
+Możliwe jest również wybranie konkretnej wersji pakietu, którą chcemy zainstalować.
+
+```bash
+python –m pip install requests==2.18.0
+```
+
+Jak nietrudno się domyślić opcja `uninstall` służy do odinstalowywania pakietów.
+
+Narzędzie PIP umożliwia również instalowanie pakietów na podstawiepliku wymagań, którego przykładowa postać może wyglądać tak:
+
+```python
+####### example-requirements.txt #######
+
+###### wymagania bez określonej wersji ######
+nose
+nose-cov
+beautifulsoup4
+
+###### wymagania z okresloną wersją ######
+docopt==0.6.1 # dopasowanie wersji.Musi być 0.6.1
+keyring>=4.1.1 # minimalna wersja 4.1.1
+coverage!=3.5 # wykluczenie wersji. Wszystko poza wersją3.5
+Mopidy-Dirble~=1.1 # Kompatybilna wersja. Rozumiane jako>= 1.1, == 1.*
+
+###### odwołuje się do innego pliku z wymaganiami ######
+-r other-requirements.txt
+
+###### konkretny plik z pakietem np.wcześniej pobrany ######
+./downloads/numpy-1.9.2-cp34-none-win32.whl
+http://wxpython.org/Phoenix/snapshot-builds/wxPython_Phoenix-3.0.3.dev1820+49a8884-cp34-none-win_amd64.whl
+
+###### dodatkowe pakiety bez określania wersji ######
+# Umieszczone tutaj tylko po to, aby pokazać,
+# że kolejność nie ma znaczenia.
+rejected
+green
+```
+
+Komedna uruchamiająca instalację pakietów z pliku requirements.txt:
+
+```bash
+python –m pip install –r requirements.txt
+```
+
+Są  to  podstawowe  i  najczęściej  wykorzystywane  komendy  narzędzia  PIP.  Po  bardziej  szczegółową dokumentację wraz z przykładami odsyłam pod adres: https://pip.pypa.io/en/stable/.
+
+### Virtualenv
+
+Virtualenv jest skrótem od **virtual environment** co oznacza wirtualne środowisko. Narzędzie to pozwala na tworzenie odrębnych środowisk zawierających interpreter Pythona oraz zestaw pakietów, które chcemy wykorzystać w konkretnym projekcie lub przed aktualizacją pakietów w projekcie produkcyjnym chcemy sprawdzić jak aplikacja będzie się zachowywała w nowym środowisku.
+
+Virtualenv jest pakietem Pythona więc aby z niego skorzystać należy upewnić się, że stosowny pakiet jest zainstalowany i ewentualnie go zainstalować.
+
+Aby stworzyć nowe środowisko wirtualne należy wskazać folder, w którym takie środowisko chcemy stworzyć. Następnie wykonanie komendy:
+
+```bash
+virtualenv nazwa_srodowiska
+```
+
+stworzy nowy folder w tym miejscu i skopiuje interpreter Pythona, który był aktualnie ustawiony w zmiennej środowiskowej PATH oraz dołączy kilka skryptów pozwalających m. in. na aktywację i deaktywację środowiska wirtualnego.
+
+Kolejną czynnością, którą trzeba wykonać aby rozpocząć pracę w tym środowisku jest jego aktywacja, która polega  na  uruchomieniu  skryptu  z  pliku Scripts\activateznajdującego się w folderze nowego środowiska. Od teraz aktywnym interpreterem jest ten zawarty w nowym środowisku. Możemy teraz uruchamiać skrypty Pythona, instalować pakiety oraz korzystać z konsoli Python w odniesieniu do tego środowiska.
+
+Na zajęciach na podstawie dokumentacji ze strony https://virtualenv.pypa.io/en/stable/userguide/zostanie zaprezentowany sposób konfiguracji i korzystania ze środowiska wirtualnego.
+
+## Obiektowy Python
+
+Programowanie obiektowe (ang. object-oriented programming) –paradygmat programowania, w którym programy definiuje się za pomocą obiektów – elementów łączących stan (czyli dane, nazywane najczęściej polami) i zachowanie (czyli procedury, tu: metody). Obiektowy program komputerowy wyrażony jest jako zbiór takich obiektów, komunikujących się pomiędzy sobą w celu wykonywania zadań.
+
+Podejście to różni się od tradycyjnego programowania proceduralnego, gdzie dane i procedury nie są ze sobąbezpośrednio związane. Programowanie obiektowe ma ułatwić pisanie, konserwację i wielokrotne użycie programów lub ich fragmentów.
+
+Największym atutem programowania, projektowania oraz analizy obiektowej jest zgodność takiego podejścia z rzeczywistością – _mózg ludzki jest w naturalny sposób najlepiej przystosowany do takiego podejścia przy przetwarzaniu informacji_. (Wikipedia)
+
+Tytułem  wstępu  przytoczyłem  dość  zwięźle  i  konkretnie określoną  definicję  programowania obiektowego. Projektując obiekty, ich metody i powiązania próbujemy modelować otaczający nas świat i przenosić do rzeczywistości wirtualnej znane nam z życia elementy po to aby rozwiązać jakiś problem lub stworzyć narzędzie do pracy dla nas lub innych ludzi. Zasada projektowania mówi też, że obiekty powinny być możliwie ograniczone w zakresie operacji jakie możemy dzięki nim wykonać. Niech robią stosunkowo niewiele ale za to dobrze. Pomaga to również lepiej rozumieć program i powiązania między obiektami,  ponownie  je wykorzystywaćjak również rozszerzać jego możliwości i łatwiej konserwować kod.
+
+Od ogólnych założeń przechodzimy do deklaracji przykładowej klasy w Pythonie.
+
+```python
+'''docstring dla modułu'''
+class Pojazd:
+    ''' docstring dla klasy '''
+    def __init__(self):'
+        ''' konstruktor '''
+        pass
+```
+
+W  przykładzie  powyżej  została  zadeklarowana  tylko  jedna  metoda  o  nazwie  `__init__`  która  jest konstruktorem. Definicja metody (bo tak nazywają się funkcje klasy) nie różni się mocno od definicji  funkcji, które już poznaliśmy. Każda metoda przyjmuje specjalny argument o nazwie self, który oznacza odwołanie do obiektu, w którym została zdefiniowana. To odpowiednik thisznanego z innych języków programowania.
+
+Rozbudujmy nieco naszą klasę:
+
+```python
+'''docstring dla modułu'''
+
+
+class Pojazd:
+    ''' docstring dla klasy '''
+    def __init__(self, kolor, marka):
+        ''' konstruktor '''
+        self.kolor = kolor
+        self.marka = marka
+        
+    def hamuj(self):
+        '''zatrzymaj samochód'''
+        return 'hamuję...'
+        
+    def jedz(self):
+        '''jedziemy dalej'''
+        return '%s jedzie dalej' % self.marka
+        
+
+pojazd = Pojazd('niebieski', 'Ford')
+print(pojazd.jedz())
+print(pojazd.hamuj())
+```
+
+Rzeczą,którą da się tutaj zauważyć jest na pewno brak modyfikatorów dostępu zarówno dla pól jak i metod klasy gdyż w Pythonie tak naprawdę prywatne metody, ani zmienne nie występują. Natomiast istnieje konwencja, która mówi, że poprzedzenie zmiennej lub metody prefiksem `_` lub `__` oznacza, że zmienna/metoda powinna być traktowana jako prywatna i inni programiści nie powinni z niej korzystać, bo jest przyzwolenie, aby je zmieniać bez ostrzeżenia. Tak więc nie uznawane są jako część API. Przy nazwach z `__` działa też mechanizm, który zamazuje nieco widoczność takiej zmiennej lub metody powodując, że odwołanie do niej jest postaci `_nazwaklasy__zmienna`. Więcej można doczytać tutaj: https://docs.python.org/3/tutorial/classes.htm.
+
+Standardowe zmienne klasowe są przechowywane dla każdej instancji klasy, ale Python umożliwia również  zdefiniowanie  zmiennych,  które  mogą  być  współdzielone  przez  wszystkie  instancje  danej  klasy. Przykład na listingu:
+
+```python
+'''docstring dla modułu'''
+
+
+class Pojazd:
+    ''' docstring dla klasy '''
+    sygnal = 'Piiib piiib'
+    
+    def __init__(self, kolor, marka):
+        ''' konstruktor '''
+        self.kolor = kolor
+        self.marka = marka
+        
+    def hamuj(self):
+        '''zatrzymaj samochód'''
+        return 'hamuję...'
+        
+    def jedz(self):
+        '''jedziemy dalej'''
+        return '%s jedzie dalej' % self.marka
+        
+        
+class OpelOmega(Pojazd):
+    def hamuj(self):
+        return 'hamuje dość szybko...'
+        
+
+pojazd = Pojazd('niebieski', 'Ford')
+print(pojazd.jedz())
+print(pojazd.hamuj())
+
+opel = OpelOmega('zielony', 'Opel')
+print(opel.hamuj())
+print(opel.sygnal)
+```
+
+Zagadnienia programowania obiektowego to również bardziej złożone mechanizmy takie jak klasy abstrakcyjne  czy  polimorfizm.Warto tutaj powiedzieć, że Python pozwala na wielokrotne dziedziczenie i dlatego nie posiada możliwości definiowania interfejsów.Te tematy wykraczają jednak poza zakres tego przedmiotu i zostaną omówione na zajęciach z zaawansowanego Pythona.
+
+## Obsługa plików
+
+Przejdźmy od razu do omówienia kilku przykładów.
+
+```python
+uchwyt = open('plik.txt')
+uchwyt = open(r'C:\Users\kropiak\Projects\python_intro\plik.txt', 'r')
+```
+
+Pierwsze  polecenie  otwiera  plik,  który  znajduje  się  w  folderze,  w  którym  jest  uruchamiany  plik. Domyślnie plik otwierany jest tylko do odczytu. Drugie polecenie przyjmuje ścieżkę bezwzględną i dodatkowo kolejny  parametr  przekazuje  tryb  odczytu  pliku,  który  tutaj  również  jest  tylko  do  odczytu.Litera `r` poprzedzająca ścieżkę informuje Pythona, że ma potraktować ten ciąg tekstowy „dosłownie” czyli nie będą brane pod uwagę ewentualne wystąpienia znaków specjalnych, które trzeba by poprzedzać znakiem `\`.
+
+Podstawowy odczyt danych z pliku można wykonać tak:
+
+```python
+uchwyt = open('plik.txt')
+uchwyt = open(r'C:\Users\kropiak\Projects\python_intro\plik.txt', 'r')
+dane = uchwyt.read()
+print(dane)
+uchwyt.close()
+```
+
+I tutaj możemy zauważyć pierwszy problem, jeżeli w pliku tekstowym znajdowały się polskie ogonki. Możemy temu zaradzić dodając dodatkowy parametr określający jak powinny być kodowane odczytywane znaki. Pamiętajmy również o zamykaniu uchwytu do pliku po odczytaniu danych.
+
+```python
+uchwyt = open(
+    r'C:\Users\kropiak\Projects\python_intro\plik.txt',
+    'r', encoding='utf-8'
+)
+```
+
+Możemy również odczytywać plik linia po linii z pomocą pętli:
+
+```python
+uchwyt = open('plik.txt', 'r', encoding='utf-8')
+
+for linia in uchwyt:
+    print(linia)
+    
+uchwyt.close()
+```
+
+W tym przypadku może pojawić się sytuacja, gdzie po każdej wyświetlonej linii na wyjściu będzie wypisywana nowa linia. To dlatego, że funkcja print dodaje na końcu znak `\n`, który oznacza nową linię, a jeżeli taki znak został również odczytana z pliku to mamy odpowiedź dlaczego tak się dzieje. Aby to zmienić można ustalić wartość parametru `end` funkcji print na inną niż domyślna wartość.
+
+Możemy również określić jakiej wielkości fragmenty pliku wyrażone w bajtach. Tym razem z pomocą pętli while:
+
+```python
+uchwyt = open('plik.txt', 'r', encoding='utf-8')
+
+while True:
+    dane = uchwyt.read(1024)
+    print(dane, end='')
+    if not dane:
+        uchwyt.close()
+        break
+```
+
+Teraz kolej na zapisywanie do pliku.
+
+```python
+uchwyt = open('plik2.txt', 'w', encoding='utf-8')
+uchwyt.write('Zapisuję do pliku.')
+uchwyt.close()
+```
+
+Istnieje bardziej nowoczesna metoda dostępu do plików, której wykorzystanie zwalnia nas z obowiązku pamiętania o zamknięciu uchwytu do pliku.
+
+```python
+with open('plik.txt', 'r', encoding='utf-8') as file_reader:
+    for linia in file_reader:
+        print(linia, end='')
+```
+
+Na  koniec  jeszczeprzykład z obsługą wyjątków, o której więcej również w zaawansowanej części Pythona.
+
+```python
+try:
+    with open("plik.txt", "r", encoding="utf-8") as file_reader:
+        for linia in file_reader:
+            print(linia, end="")
+except IOError:
+    print("Wystapił wyjątek IOError")
+```
