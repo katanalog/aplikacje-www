@@ -266,7 +266,7 @@ Zawartość modułu może być zbiorem funkcji lub klas i metod. Taki moduł mo�
 
 ```python
 # plik matma.py
-'''deklaracja funkcji w prostym module'''
+"""deklaracja funkcji w prostym module"""
 
 
 def dodaj(a, b):
@@ -436,11 +436,11 @@ Tytułem  wstępu  przytoczyłem  dość  zwięźle  i  konkretnie określoną  
 Od ogólnych założeń przechodzimy do deklaracji przykładowej klasy w Pythonie.
 
 ```python
-'''docstring dla modułu'''
+"""docstring dla modułu"""
 class Pojazd:
-    ''' docstring dla klasy '''
+    """ docstring dla klasy """
     def __init__(self):'
-        ''' konstruktor '''
+        """ konstruktor """
         pass
 ```
 
@@ -449,22 +449,22 @@ W  przykładzie  powyżej  została  zadeklarowana  tylko  jedna  metoda  o  naz
 Rozbudujmy nieco naszą klasę:
 
 ```python
-'''docstring dla modułu'''
+"""docstring dla modułu"""
 
 
 class Pojazd:
-    ''' docstring dla klasy '''
+    """ docstring dla klasy """
     def __init__(self, kolor, marka):
-        ''' konstruktor '''
+        """ konstruktor """
         self.kolor = kolor
         self.marka = marka
         
     def hamuj(self):
-        '''zatrzymaj samochód'''
+        """zatrzymaj samochód"""
         return 'hamuję...'
         
     def jedz(self):
-        '''jedziemy dalej'''
+        """jedziemy dalej"""
         return '%s jedzie dalej' % self.marka
         
 
@@ -478,24 +478,24 @@ Rzeczą,którą da się tutaj zauważyć jest na pewno brak modyfikatorów dost�
 Standardowe zmienne klasowe są przechowywane dla każdej instancji klasy, ale Python umożliwia również  zdefiniowanie  zmiennych,  które  mogą  być  współdzielone  przez  wszystkie  instancje  danej  klasy. Przykład na listingu:
 
 ```python
-'''docstring dla modułu'''
+"""docstring dla modułu"""
 
 
 class Pojazd:
-    ''' docstring dla klasy '''
+    """ docstring dla klasy """
     sygnal = 'Piiib piiib'
     
     def __init__(self, kolor, marka):
-        ''' konstruktor '''
+        """ konstruktor """
         self.kolor = kolor
         self.marka = marka
         
     def hamuj(self):
-        '''zatrzymaj samochód'''
+        """zatrzymaj samochód"""
         return 'hamuję...'
         
     def jedz(self):
-        '''jedziemy dalej'''
+        """jedziemy dalej"""
         return '%s jedzie dalej' % self.marka
         
         
