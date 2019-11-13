@@ -11,7 +11,7 @@ Po zalogowaniu się do MySQL przez [Panel PHPMyAdmin](http://bad.uwm.edu.pl/phpm
 
 Można tego dokonać również poleceniem SQL:
 ```sql
-# Nazwę usera podajemy zamiast user
+# Nazwe usera podajemy zamiast user
 SET PASSWORD FOR 'user'@'%'=PASSWORD('nowe_haslo');
 ```
 
