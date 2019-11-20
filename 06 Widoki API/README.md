@@ -1,5 +1,47 @@
 # Widoki API
 
+Django REST Framework udostępnia klasę APIView, która dziedziczy po klasie `View` Django.
+
+Klasy `APIView` różnią się od zwykłych klas `View` pod następującymi względami:
+- Żądania przekazywane do serwera będą instancjami `Request`, a nie instancjami `HttpRequest` z Django.
+- Metody mogą zwracać odpowiedź `Response` zamiast `HttpResponse` Django.
+- Wszelkie wyjątki `APIException` zostaną wychwycone i zamieszczone w odpowiedziach.
+- Przychodzące żądania zostaną uwierzytelnione, a przed wysłaniem żądania do metody obsługi uruchomione zostaną odpowiednie uprawnienia i sprawdzanie danych.
+
+Używanie klasy `APIView` jest prawie takie samo jak używanie zwykłej klasy `View`. Jak zwykle, przychodzące żądanie jest wysyłane do odpowiedniej metody obsługi, takiej jak `.get()` lub `.post()`. Ponadto w klasie można ustawić wiele atrybutów, które kontrolują różne aspekty zasad API.
+
+Przykład ponizej:
+
+```python
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import authentication, permissions
+from django.contrib.auth.models import User
+
+class ListUsers(APIView):
+    """
+    View to list all users in the system.
+
+    * Requires token authentication.
+    * Only admin users are able to access this view.
+    """
+    authentication_classes = [authentication.TokenAuthentication]
+    permission_classes = [permissions.IsAdminUser]
+
+    def get(self, request, format=None):
+        """
+        Return a list of all users.
+        """
+        usernames = [user.username for user in User.objects.all()]
+        return Response(usernames)
+```
+
+Pełna dokumentacja DRF dla widoków dostępna tutaj:
+
+- https://www.django-rest-framework.org/api-guide/views/
+
+
+
 # Ćwiczenia
 
 Celem ćwiczeń będzie stworzenie widoków (endpointów), dzięki którym użytkownik będzie mógł łączyć się z naszym API by pobierac, edytować czy usuwać dane. W tym celu zostanie użyte `djangorestframework`.
