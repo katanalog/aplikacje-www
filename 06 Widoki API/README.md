@@ -40,6 +40,30 @@ Pełna dokumentacja DRF dla widoków dostępna tutaj:
 
 - https://www.django-rest-framework.org/api-guide/views/
 
+## Permissions
+
+Sprawdzanie uprawnień jest zawsze uruchamiane na samym początku widoku, zanim będzie można kontynuować dowolny inny kod. Podczas sprawdzania uprawnień zwykle wykorzystuje się informacje uwierzytelniające we właściwościach request.user i request.auth w celu ustalenia, czy przychodzące żądanie powinno być dozwolone.
+
+Dokumentacja uprawnień:
+
+- https://www.django-rest-framework.org/api-guide/permissions/
+
+Przykład:
+
+```python
+from rest_framework.permissions import IsAuthenticated  # Import
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
+class ExampleView(APIView):
+    permission_classes = [IsAuthenticated]  # Ustawianie klas zezwolen
+
+    def get(self, request, format=None):
+        content = {
+            'status': 'request was permitted'
+        }
+        return Response(content)
+```
 
 
 # Ćwiczenia
@@ -56,3 +80,4 @@ Celem ćwiczeń będzie stworzenie widoków (endpointów), dzięki którym użyt
 5. Stwórz widoki dla swoich modeli na podstawie [dokumentacji](https://www.django-rest-framework.org/tutorial/3-class-based-views/). A następnie dodaj je do `urlpatterns` by wyświetliły się w liście dostępnych endpointów API.
    - Zwróć uwagę, które modele powinny mieć możliwość dodawania, usuwania czy edytowania informacji. Może niektóre powinny tylko wyświetlać dane?
    - Pamiętaj by zastosować serializery z poprzednich zajęć.
+6. Dodaj zezwolenia do aplikacji, tak by tylko zarejestrowani uzytkownicy mogli korzystać z endpointów
