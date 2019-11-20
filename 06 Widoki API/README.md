@@ -80,4 +80,5 @@ Celem ćwiczeń będzie stworzenie widoków (endpointów), dzięki którym użyt
 5. Stwórz widoki dla swoich modeli na podstawie [dokumentacji](https://www.django-rest-framework.org/tutorial/3-class-based-views/). A następnie dodaj je do `urlpatterns` by wyświetliły się w liście dostępnych endpointów API.
    - Zwróć uwagę, które modele powinny mieć możliwość dodawania, usuwania czy edytowania informacji. Może niektóre powinny tylko wyświetlać dane?
    - Pamiętaj by zastosować serializery z poprzednich zajęć.
-6. Dodaj zezwolenia do aplikacji, tak by tylko zarejestrowani uzytkownicy mogli korzystać z endpointów
+6. Dodaj zezwolenia do aplikacji, tak by tylko zarejestrowani uzytkownicy mogli korzystać z endpointów,
+7. Dodaj endpointy, które są dostępne tylko dla administratora.
