@@ -17,7 +17,7 @@
 
 ## Zadania wykonywane na ćwiczeniach:
 
-- [Repozytorium z zajęciami](https://github.com/lukzmu/uwm-aplikacje-www)
+- [Repozytorium z zajęciami](https://github.com/uwm-workshops/aplikacje-www/)
 
 ## Materiały zajęć przygotowali:
 
